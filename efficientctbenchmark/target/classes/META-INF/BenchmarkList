@@ -1,0 +1,13 @@
+JMH S 44 edu.stanford.cs.crypto.InnerProductBenchmark S 74 edu.stanford.cs.crypto.generated.InnerProductBenchmark_testProving_jmhTest S 11 testProving S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 44 edu.stanford.cs.crypto.InnerProductBenchmark S 77 edu.stanford.cs.crypto.generated.InnerProductBenchmark_testVerifying1_jmhTest S 14 testVerifying1 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 44 edu.stanford.cs.crypto.InnerProductBenchmark S 77 edu.stanford.cs.crypto.generated.InnerProductBenchmark_testVerifying2_jmhTest S 14 testVerifying2 S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 38 edu.stanford.cs.crypto.OtherBenchmarks S 66 edu.stanford.cs.crypto.generated.OtherBenchmarks_squareMod_jmhTest S 9 squareMod S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 42 edu.stanford.cs.crypto.MultiProofBenchmark S 74 edu.stanford.cs.crypto.generated.MultiProofBenchmark_testVerifying_jmhTest S 13 testVerifying S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 38 edu.stanford.cs.crypto.OtherBenchmarks S 65 edu.stanford.cs.crypto.generated.OtherBenchmarks_groupExp_jmhTest S 8 groupExp S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 38 edu.stanford.cs.crypto.OtherBenchmarks S 64 edu.stanford.cs.crypto.generated.OtherBenchmarks_withMod_jmhTest S 7 withMod S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 42 edu.stanford.cs.crypto.MultiProofBenchmark S 72 edu.stanford.cs.crypto.generated.MultiProofBenchmark_testProving_jmhTest S 11 testProving S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 38 edu.stanford.cs.crypto.OtherBenchmarks S 64 edu.stanford.cs.crypto.generated.OtherBenchmarks_square2_jmhTest S 7 square2 S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 38 edu.stanford.cs.crypto.OtherBenchmarks S 64 edu.stanford.cs.crypto.generated.OtherBenchmarks_square1_jmhTest S 7 square1 S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 37 edu.stanford.cs.crypto.ProofBenchmark S 69 edu.stanford.cs.crypto.generated.ProofBenchmark_testVerifying_jmhTest S 13 testVerifying S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 38 edu.stanford.cs.crypto.OtherBenchmarks S 62 edu.stanford.cs.crypto.generated.OtherBenchmarks_noMod_jmhTest S 5 noMod S 10 Throughput E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 37 edu.stanford.cs.crypto.ProofBenchmark S 67 edu.stanford.cs.crypto.generated.ProofBenchmark_testProving_jmhTest S 11 testProving S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E E E E E 

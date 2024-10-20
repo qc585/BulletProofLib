@@ -32,6 +32,9 @@
 package edu.stanford.cs.crypto;
 
 import edu.stanford.cs.crypto.efficientct.GeneratorParams;
+import edu.stanford.cs.crypto.efficientct.algebra.BouncyCastleCurve;
+import edu.stanford.cs.crypto.efficientct.algebra.GroupElement;
+import edu.stanford.cs.crypto.efficientct.algebra.Secp256k1;
 import edu.stanford.cs.crypto.efficientct.util.ProofUtils;
 import edu.stanford.cs.crypto.efficientct.VerificationFailedException;
 import edu.stanford.cs.crypto.efficientct.commitments.PeddersenCommitment;
@@ -43,10 +46,11 @@ import java.math.BigInteger;
 
 @State(Scope.Benchmark)
 public class ProofBenchmark {
+    private final Secp256k1 ECGroup = new Secp256k1();
     private final RangeProofSystem rangeProofSystem = new RangeProofSystem();
     private final RangeProofProver prover = new RangeProofProver();
-    private final GeneratorParams generatorParams = GeneratorParams.generateParams(64);
-    private ECPoint commitment;
+    private final GeneratorParams generatorParams = GeneratorParams.generateParams(64,ECGroup);
+    private GroupElement commitment;
     private PeddersenCommitment witness;
     private RangeProof oneProof;
     private RangeProofVerifier verifier = new RangeProofVerifier();

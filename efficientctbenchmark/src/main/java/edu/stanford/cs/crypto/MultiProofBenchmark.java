@@ -33,6 +33,10 @@ package edu.stanford.cs.crypto;
 
 import cyclops.collections.immutable.VectorX;
 import edu.stanford.cs.crypto.efficientct.GeneratorParams;
+import edu.stanford.cs.crypto.efficientct.algebra.BouncyCastleCurve;
+import edu.stanford.cs.crypto.efficientct.algebra.BouncyCastleECPoint;
+import edu.stanford.cs.crypto.efficientct.algebra.GroupElement;
+import edu.stanford.cs.crypto.efficientct.algebra.Secp256k1;
 import edu.stanford.cs.crypto.efficientct.util.ProofUtils;
 import edu.stanford.cs.crypto.efficientct.VerificationFailedException;
 import edu.stanford.cs.crypto.efficientct.commitments.PeddersenCommitment;
@@ -45,20 +49,20 @@ import org.openjdk.jmh.annotations.*;
 
 @State(Scope.Benchmark)
 public class MultiProofBenchmark {
+    private final Secp256k1 ECGroup = new Secp256k1();
     private final MultiRangeProofSystem rangeProofSystem = new MultiRangeProofSystem();
     private final MultiRangeProofProver prover = new MultiRangeProofProver();
-    private final GeneratorParams generatorParams = GeneratorParams.generateParams(1024);
-    private GeneratorVector commitments;
-    private VectorX<PeddersenCommitment> witness;
+    private final GeneratorParams<BouncyCastleECPoint> generatorParams = GeneratorParams.generateParams(1024,ECGroup);
+    private GeneratorVector<BouncyCastleECPoint> commitments;
+    private VectorX<PeddersenCommitment<BouncyCastleECPoint>> witness;
     private RangeProof oneProof;
     private MultiRangeProofVerifier verifier = new MultiRangeProofVerifier();
 
     @Setup
     public void setUp() {
-        witness = VectorX.generate(6, () -> ProofUtils.randomNumber(60)).map(x -> new PeddersenCommitment(generatorParams.getBase(), x)).materialize();
+        witness = VectorX.generate(6, () -> ProofUtils.randomNumber(60)).map(x -> new PeddersenCommitment<BouncyCastleECPoint>(generatorParams.getBase(), x)).materialize();
 
-
-        commitments = GeneratorVector.from(witness.map(PeddersenCommitment::getCommitment));
+        commitments = GeneratorVector.from(witness.<BouncyCastleECPoint>map(PeddersenCommitment<BouncyCastleECPoint>::getCommitment),ECGroup);
         oneProof = testProving();
     }
 

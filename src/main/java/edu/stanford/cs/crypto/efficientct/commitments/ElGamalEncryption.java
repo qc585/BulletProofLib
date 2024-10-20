@@ -1,4 +1,4 @@
-package edu.stanford.cs.crypto.efficientct.zetherprover;
+package edu.stanford.cs.crypto.efficientct.commitments;
 
-public class OpeningStatement {
+public class ElGamalEncryption {
 }

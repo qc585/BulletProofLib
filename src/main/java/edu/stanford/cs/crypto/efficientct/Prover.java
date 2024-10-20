@@ -1,5 +1,10 @@
 package edu.stanford.cs.crypto.efficientct;
 
+import cyclops.collections.immutable.VectorX;
+import edu.stanford.cs.crypto.efficientct.commitments.PeddersenCommitment;
+import edu.stanford.cs.crypto.efficientct.linearalgebra.GeneratorVector;
+import edu.stanford.cs.crypto.efficientct.rangeproof.RangeProof;
+
 import java.math.BigInteger;
 import java.util.Optional;
 

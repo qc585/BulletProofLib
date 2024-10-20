@@ -1,6 +1,7 @@
 package edu.stanford.cs.crypto;
 
 import cyclops.collections.immutable.VectorX;
+import edu.stanford.cs.crypto.efficientct.util.ECConstants;
 import edu.stanford.cs.crypto.efficientct.util.ProofUtils;
 import edu.stanford.cs.crypto.efficientct.linearalgebra.FieldVector;
 import org.bouncycastle.math.ec.ECPoint;
@@ -13,20 +14,19 @@ import java.math.BigInteger;
  */
 @State(Scope.Benchmark)
 public class OtherBenchmarks {
-    BigInteger y = ProofUtils.challengeFromInts(BigInteger.ONE);
+    BigInteger y = ProofUtils.challengeFromints(BigInteger.ONE);
     ECPoint g = ECConstants.G;
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     public FieldVector noMod() {
-        return FieldVector.from(VectorX.iterate(16, BigInteger.ONE, y::multiply).materialize());
-
+        return FieldVector.from(VectorX.iterate(16, BigInteger.ONE, y::multiply).materialize(),y);
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     public FieldVector withMod() {
-        return FieldVector.from(VectorX.iterate(16, BigInteger.ONE, y::multiply).map(bi -> bi.mod(ECConstants.P)).materialize());
+        return FieldVector.from(VectorX.iterate(16, BigInteger.ONE, y::multiply).map(bi -> bi.mod(ECConstants.P)).materialize(),y);
 
     }
 

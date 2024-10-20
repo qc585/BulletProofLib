@@ -21,9 +21,8 @@ public class FieldVector implements Iterable<BigInteger> {
     }
 
     private FieldVector from(VectorX<BigInteger> vectorX) {
-        return new FieldVector(vectorX, q);
+        return new FieldVector(vectorX,q);
     }
-
 
     public static FieldVector from(VectorX<BigInteger> vectorX, BigInteger q) {
         return new FieldVector(vectorX, q);

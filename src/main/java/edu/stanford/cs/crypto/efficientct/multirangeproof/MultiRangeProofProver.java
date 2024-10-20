@@ -8,6 +8,7 @@ import edu.stanford.cs.crypto.efficientct.Prover;
 import edu.stanford.cs.crypto.efficientct.algebra.GroupElement;
 import edu.stanford.cs.crypto.efficientct.commitments.PeddersenCommitment;
 import edu.stanford.cs.crypto.efficientct.commitments.PolyCommitment;
+import edu.stanford.cs.crypto.efficientct.innerproduct.ExtendedInnerProductProof;
 import edu.stanford.cs.crypto.efficientct.innerproduct.InnerProductProof;
 import edu.stanford.cs.crypto.efficientct.innerproduct.InnerProductProver;
 import edu.stanford.cs.crypto.efficientct.innerproduct.InnerProductWitness;
@@ -29,6 +30,15 @@ import java.util.stream.Stream;
  */
 public class MultiRangeProofProver<T extends GroupElement<T>> implements Prover<GeneratorParams<T>, GeneratorVector<T>, VectorX<PeddersenCommitment<T>>, RangeProof<T>> {
 
+    @Override
+    public RangeProof<T> generateProof(GeneratorParams<T> parameter, GeneratorVector<T> commitments, VectorX<PeddersenCommitment<T>> witness){
+        return generateProof(parameter,commitments,witness,Optional.empty());
+    }
+
+    @Override
+    public RangeProof<T> generateProof(GeneratorParams<T> parameter, GeneratorVector<T> commitments, VectorX<PeddersenCommitment<T>> witness, BigInteger salt) {
+        return generateProof(parameter, commitments, witness, Optional.of(salt));
+    }
 
     @Override
     public RangeProof<T> generateProof(GeneratorParams<T> parameter, GeneratorVector<T> commitments, VectorX<PeddersenCommitment<T>> witness, Optional<BigInteger> salt) {
